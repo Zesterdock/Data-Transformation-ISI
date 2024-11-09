@@ -1,84 +1,49 @@
-# Data-Transformation-ISI
-# Data Transformation Project
+# Data Transformation ISI
 
 ## Table of Contents
 - [Overview](#overview)
-- [Features](#features)
-- [Project Structure](#project-structure)
+- [Repository Structure](#repository-structure)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Code Documentation](#code-documentation)
+- [Data Processing](#data-processing)
 - [Troubleshooting](#troubleshooting)
-- [License](#license)
 
 ## Overview
-This project provides a robust data transformation pipeline built in Python. It focuses on cleaning and preparing datasets for analysis through automated processes including handling missing values, standardizing data types, and improving column naming conventions.
+This project provides data transformation tools implemented in Python using Jupyter Notebooks. It focuses on processing and analyzing data through automated procedures including data cleaning, transformation, and analysis.
 
-## Features
-- **Missing Data Handling**
-  - Intelligent filling of missing values using mean/median
-  - Configurable handling strategies per column
-  - Optional row removal for specific null conditions
-
-- **Data Type Management**
-  - Automated type conversion and validation
-  - Support for numeric, categorical, and datetime fields
-  - Consistency checks across columns
-
-- **Column Standardization**
-  - Systematic column renaming for clarity
-  - Consistent naming conventions
-  - Documentation of naming changes
-
-- **Export Capabilities**
-  - CSV export with configurable options
-  - Preservation of data types
-  - Optional compression support
-
-## Project Structure
+## Repository Structure
 ```
-data-transformation-project/
+Data-Transformation-ISI/
 │
-├── data/                    # Raw data storage
-│   └── data.csv            # Original dataset
-│
-├── notebooks/              # Jupyter notebooks
-│   └── data_transformation.ipynb
-│
-├── transformed_data/       # Processed data output
-│   └── transformed_data.csv
-│
-├── README.md              # Project documentation
-└── requirements.txt       # Dependencies
+├── Untitled18.ipynb        # Main transformation notebook
+├── Untitled18 (1).ipynb   # Supplementary transformation notebook
+├── data.csv               # Input dataset
+└── README.md             # Project documentation
 ```
 
 ## Prerequisites
 - Python 3.7 or higher
 - Jupyter Notebook
 - Required Python packages:
-  ```
-  pandas>=1.3.0
-  numpy>=1.20.0
-  jupyter>=1.0.0
+  ```bash
+  pandas
+  numpy
+  jupyter
   ```
 
 ## Installation
 
 1. **Clone the Repository**
    ```bash
-   git clone <repository-url>
-   cd data-transformation-project
+   git clone https://github.com/Zesterdock/Data-Transformation-ISI.git
+   cd Data-Transformation-ISI
    ```
 
 2. **Set Up Python Environment**
    ```bash
-   # Create and activate virtual environment (optional but recommended)
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   
-   # Install dependencies
-   pip install -r requirements.txt
+   # Install required packages
+   pip install pandas numpy jupyter
    ```
 
 3. **Verify Installation**
@@ -88,108 +53,79 @@ data-transformation-project/
 
 ## Usage
 
-### Running the Transformation
+### Running the Notebooks
 
 1. **Start Jupyter Notebook**
    ```bash
    jupyter notebook
    ```
 
-2. **Open the Transformation Notebook**
-   - Navigate to `notebooks/data_transformation.ipynb`
-   - Follow the step-by-step instructions in the notebook
+2. **Access the Notebooks**
+   - Open `Untitled18.ipynb` for the main transformation process
+   - Open `Untitled18 (1).ipynb` for additional transformations
 
-3. **Configure Transformations**
-   ```python
-   # Example configuration in notebook
-   config = {
-       'missing_strategy': {
-           'Age': 'mean',
-           'Salary': 'median',
-           'Department': 'drop'
-       },
-       'column_renames': {
-           'Department': 'Dept'
-       }
-   }
-   ```
+3. **Working with Data**
+   - Ensure `data.csv` is in the root directory
+   - Follow the step-by-step instructions in the notebooks
+   - Execute cells sequentially to process your data
 
-4. **Execute Transformation**
-   - Run all cells sequentially
-   - Review outputs after each transformation step
+## Data Processing
 
-### Example Output
-```python
-# Sample transformed data
-   Age    Salary    Dept
-0  25     50000     Sales
-1  30     55000     HR
-2  28     47000     IT
-3  34     65000     Finance
-```
+### Main Notebook (`Untitled18.ipynb`)
+The primary notebook contains the core data transformation logic:
+- Data loading and initial inspection
+- Data cleaning and preprocessing
+- Feature transformation
+- Analysis and visualization
 
-## Code Documentation
+### Supplementary Notebook (`Untitled18 (1).ipynb`)
+This notebook provides additional processing capabilities:
+- Extended analysis
+- Alternative transformation approaches
+- Supplementary visualizations
 
-### Core Functions
-
-#### 1. Data Loading
-```python
-def load_data(filepath: str) -> pd.DataFrame:
-    """
-    Load data from CSV file into pandas DataFrame.
-    
-    Args:
-        filepath (str): Path to input CSV file
-        
-    Returns:
-        pd.DataFrame: Loaded data
-    """
-```
-
-#### 2. Missing Value Handler
-```python
-def handle_missing(df: pd.DataFrame, strategy: dict) -> pd.DataFrame:
-    """
-    Apply missing value strategies to specified columns.
-    
-    Args:
-        df (pd.DataFrame): Input DataFrame
-        strategy (dict): Column-wise strategies
-        
-    Returns:
-        pd.DataFrame: Processed DataFrame
-    """
-```
+### Input Data
+The `data.csv` file should be structured with appropriate columns for processing. Ensure your data follows the expected format before running the transformations.
 
 ## Troubleshooting
 
 ### Common Issues
 
-1. **File Not Found Error**
+1. **Notebook Loading Issues**
    ```bash
-   # Verify file location
-   ls data/data.csv
+   # Verify Jupyter installation
+   jupyter --version
    
-   # Check file permissions
-   chmod 644 data/data.csv
+   # Reinstall if needed
+   pip install --upgrade jupyter
    ```
 
-2. **Memory Issues**
-   - Reduce DataFrame size using dtypes optimization
-   - Process data in chunks
-   ```python
-   pd.read_csv('data.csv', chunksize=10000)
-   ```
-
-3. **Package Conflicts**
+2. **Data File Errors**
    ```bash
-   # Reinstall dependencies
-   pip uninstall -r requirements.txt
-   pip install -r requirements.txt
+   # Check if data.csv exists in the correct location
+   ls data.csv
+   
+   # Verify file permissions
+   chmod 644 data.csv
    ```
 
-## License
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+3. **Package Dependencies**
+   ```bash
+   # Install missing packages
+   pip install pandas numpy
+   
+   # Verify installations
+   python -c "import pandas, numpy"
+   ```
+
+### Getting Help
+If you encounter issues:
+1. Check if your Python environment meets the prerequisites
+2. Verify all files are in their correct locations
+3. Create an issue on the GitHub repository with:
+   - Description of the problem
+   - Error messages
+   - Steps to reproduce the issue
 
 ---
-For additional support, please open an issue on the GitHub repository or contact the maintainers.
+For more information or to report issues, please visit the [GitHub repository](https://github.com/Zesterdock/Data-Transformation-ISI).
